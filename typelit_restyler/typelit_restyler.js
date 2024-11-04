@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         typelit restyler
 // @namespace    https://raw.githubusercontent.com/frogssoldseparately/
+// @downloadURL  https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
 // @updateURL    https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
-// @version      0.1
+// @version      0.2
 // @description  Adds additional themes to typelit.io
 // @author       frogssoldseparately
 // @match        https://www.typelit.io
