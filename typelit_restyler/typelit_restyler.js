@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         typelit restyler
-// @namespace    http://tampermonkey.net/
+// @namespace    https://raw.githubusercontent.com/frogssoldseparately/
+// @updateURL    https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
 // @version      0.1
 // @description  Adds additional themes to typelit.io
 // @author       frogssoldseparately
