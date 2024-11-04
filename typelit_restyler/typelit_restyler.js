@@ -3,7 +3,7 @@
 // @namespace    https://raw.githubusercontent.com/frogssoldseparately/
 // @downloadURL  https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
 // @updateURL    https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
-// @version      0.2
+// @version      0.3
 // @description  Adds additional themes to typelit.io
 // @author       frogssoldseparately
 // @match        https://www.typelit.io
@@ -51,8 +51,8 @@
             });
             // generates additional theme buttons when the theme settings panel is opened
             elem.addEventListener('click', () => {
-                themeMenuState = themeMenuState === "shown" ? "hidden" : "shown";
-                if (themeMenuState === "hidden") return;
+                // returns immediately if the theme menu is already open
+                if (document.querySelector('div[class$="themeMenu"]')) return;
                 waitForElement(() => document.querySelector('div[class*="themeMenu"]'), (elem) => {
                     // fetching necessary classnames
                     const headerClass = elem.querySelector('div[class*="headerMargin"]').className;
@@ -147,7 +147,6 @@
     };
 
     const restylerLSName = "restyler-selected-style"; // localStorage field name for last selected theme
-    let themeMenuState = "hidden"; // whether or not the theme selector is currently displayed
 
     // holds information about additional themes and generates necessary css to apply them to the page
     class StyleContainer {
