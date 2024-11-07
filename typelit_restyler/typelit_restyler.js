@@ -3,7 +3,7 @@
 // @namespace    https://raw.githubusercontent.com/frogssoldseparately/
 // @downloadURL  https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
 // @updateURL    https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
-// @version      0.4
+// @version      0.5
 // @description  Adds additional themes to typelit.io
 // @author       frogssoldseparately
 // @match        https://www.typelit.io
@@ -328,116 +328,121 @@
         misspaceBackground,
         pageBackground,
       } = style;
-      return document.createTextNode(
-        `
-        .darkThemeStyles_TYPED__Ol9UD {
-          color: ${typedColor} !important;
-        }
+      const styleTemplate = `
+      [class*="_TYPED__"] {
+        color: ${typedColor} !important;
+      }
 
-        .darkThemeStyles_ACTIVE_BOX__fsX__ {
-          color: ${untypedColor} !important;
-          background-color: ${blinkBackground} !important;
-        }
+      [class*="_ACTIVE_BOX__"] {
+        color: ${untypedColor} !important;
+        background-color: ${blinkBackground} !important;
+      }
 
-        .darkThemeStyles_FIRST_ACTIVE_BLINK_FILL__9fCaF {
-          color: ${untypedColor} !important;
-        }
+      [class*="_ACTIVE_LINE__"] {
+        color: ${untypedColor} !important;
+        box-shadow: -2px 0 ${blinkBackground} !important;
+      }
 
-        .darkThemeStyles_UNTYPED__72cJX {
-          color: ${untypedColor} !important;
-        }
+      [class*="_ACTIVE_NONE__"] {
+        color: ${untypedColor} !important;
+      }
 
-        .darkThemeStyles_MISTYPED__RhNiC {
-          color: ${mistypeColor} !important;
-        }
+      [class*="_FIRST_ACTIVE_BLINK_FILL__"] {
+        color: ${untypedColor} !important;
+      }
 
-        .darkThemeStyles_SPACE_MISTYPED__iyOcf {
-          color: ${altMistypeColor} !important;
-          background-color: ${misspaceBackground} !important;
-        }
+      [class*="_UNTYPED__"] {
+        color: ${untypedColor} !important;
+      }
 
-        .css-10g5w9r-pageBackground {
-          background-color: ${pageBackground} !important;
-        }
+      [class*="_MISTYPED__"] {
+        color: ${mistypeColor} !important;
+      }
 
-        .css-9detj6-consolePageBreadcrumbsContainer {
-          background-color: ${pageBackground} !important;
-        }
+      [class*="_SPACE_MISTYPED__"] {
+        color: ${altMistypeColor} !important;
+        background-color: ${misspaceBackground} !important;
+      }
 
-        .css-uiqvvv-statTracker {
-          color: ${untypedColor} !important;
-        }
+      [class$="-pageBackground"] {
+        background-color: ${pageBackground} !important;
+      }
 
-        .css-pdbaiw-statTracker-savedStat {
-          color: ${untypedColor} !important;
-        }
+      [class$="-consolePageBreadcrumbsContainer"] {
+        background-color: ${pageBackground} !important;
+      }
 
-        .css-1ezckq4-backLink {
-          color: ${untypedColor} !important;
-        }
+      [class$="-statTracker"] {
+        color: ${untypedColor} !important;
+      }
 
-        path {
-          color: ${untypedColor} !important;
-        }
+      [class$="-statTracker-savedStat"] {
+        color: ${untypedColor} !important;
+      }
 
-        .css-jkutsy-settingsHeader {
-          color: ${typedColor} !important;
-        }
+      [class$="-backLink"] {
+        color: ${untypedColor} !important;
+      }
 
-        .css-13yn9ar-sectionHeader {
-          color: ${typedColor} !important;
-        }
+      path {
+        color: ${untypedColor} !important;
+      }
 
-        .css-1d8gozu-themeMenuButton {
-          color: ${typedColor} !important;
-        }
+      [class$="-settingsHeader"] {
+        color: ${typedColor} !important;
+      }
 
-        .css-t57uu5-settingLabel .MuiFormControlLabel-label {
-          color: ${typedColor} !important;
-        }
+      [class$="-sectionHeader"] {
+        color: ${typedColor} !important;
+      }
 
-        .css-1cb7on9-paper {
-          background-color: ${blinkBackground} !important;
-        }
+      [class$="-themeMenuButton"] {
+        color: ${typedColor} !important;
+      }
 
-        .css-ucvewq-charTyped {
-          color: ${typedColor} !important;
-        }
+      [class$="-settingLabel"] .MuiFormControlLabel-label {
+        color: ${typedColor} !important;
+      }
 
-        .css-1qck3km-charActiveBox {
-          color: ${untypedColor} !important;
-          background-color: ${blinkBackground} !important;
-        }
+      [class$="-paper"] {
+        background-color: ${blinkBackground} !important;
+      }
 
-        .css-w8p19a-charUntyped {
-          color: ${untypedColor} !important;
-        }
+      [aria-label="theme menu"] {
+        background-color: ${blinkBackground} !important;
+      }
 
-        .css-15kta94-buttonGroup .MuiToggleButtonGroup-root .MuiToggleButton-root {
-          background-color: ${pageBackground} !important;
-        }
+      [class$="-charTyped"] {
+        color: ${typedColor} !important;
+      }
 
-        .css-kotobf-root {
-          background-color: ${blinkBackground} !important;
-        }
+      [class$="-charActiveBox"] {
+        color: ${untypedColor} !important;
+        background-color: ${blinkBackground} !important;
+      }
 
-        .css-1ln3q1d-themeSectionHeader-_headerMargin {
-          color: ${typedColor} !important;
-        }
+      [class$="-charUntyped"] {
+        color: ${untypedColor} !important;
+      }
 
-        .css-iq0y6w-themeSectionHeader {
-          color: ${typedColor} !important;
-        }
+      [class$="-buttonGroup"] .MuiToggleButtonGroup-root .MuiToggleButton-root {
+        background-color: ${pageBackground} !important;
+      }
 
-        .css-if064g-sectionHeader {
-          color: ${typedColor} !important;
-        }
+      [class$="-themeSectionHeader-_headerMargin"] {
+        color: ${typedColor} !important;
+      }
 
-        .css-wlgkji-resetDefaultsButton {
-          color: ${typedColor} !important;
-        }
-        `
-      );
+      [class$="-themeSectionHeader"] {
+        color: ${typedColor} !important;
+      }
+
+      [class$="-resetDefaultsButton"] {
+        color: ${typedColor} !important;
+      }
+      `;
+
+      return document.createTextNode(styleTemplate);
     }
     #temporaryHold = null;
     #selectedStyle = {};
