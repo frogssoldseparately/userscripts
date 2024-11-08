@@ -3,7 +3,7 @@
 // @namespace    https://raw.githubusercontent.com/frogssoldseparately/
 // @downloadURL  https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
 // @updateURL    https://raw.githubusercontent.com/frogssoldseparately/userscripts/refs/heads/main/typelit_restyler/typelit_restyler.js
-// @version      0.5
+// @version      0.6
 // @description  Adds additional themes to typelit.io
 // @author       frogssoldseparately
 // @match        https://www.typelit.io
@@ -246,6 +246,36 @@
         "#000000",
         "#ff0000",
         "#ffffff"
+      );
+      this.newStyle(
+        "pumpkin",
+        "#ffc94a",
+        "#4e5b40",
+        "#a8cc88",
+        "#d7977b",
+        "#ff6f55",
+        "#9f673e",
+        "#4b703a"
+      );
+      this.newStyle(
+        "deep sea",
+        "#4cc9f0",
+        "#4361ee",
+        "#bde0fe",
+        "#f72585",
+        "#f72585",
+        "#7209b7",
+        "#3a0ca3"
+      );
+      this.newStyle(
+        "oak",
+        "#d8f3dc",
+        "#74c69d",
+        "#081c15",
+        "#9f6d2b",
+        "#9f6d2b",
+        "#442f17",
+        "#1b4332"
       );
       // appends a style tag
       document.head.appendChild(this.#styleElement);
