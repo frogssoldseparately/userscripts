@@ -348,6 +348,20 @@
         : this.#selectedStyle;
       this.#styleElement.appendChild(StyleContainer.fillStyleTemplate(style));
     }
+    static hexToRGB(hex, addArray = [0, 0, 0]) {
+      return StyleContainer.hexToRGBA(hex).slice(0, -1);
+    }
+    static hexToRGBA(hex, alpha = 1) {
+      const rgba = [];
+      hex = hex.slice(1); // remove the #
+      let i = 0;
+      while (i < hex.length - 1) {
+        const isolated = "0x" + hex.slice(i, (i += 2)).toLowerCase();
+        rgba.push(Number(isolated));
+      }
+      rgba.push(alpha);
+      return rgba;
+    }
     static fillStyleTemplate(style) {
       const {
         untypedColor,
@@ -440,6 +454,18 @@
 
       [aria-label="theme menu"] {
         background-color: ${blinkBackground} !important;
+        scrollbar-color: ${untypedColor} rgba(${StyleContainer.hexToRGBA(
+        untypedColor,
+        0.67
+      ).join(", ")}) !important;
+      }
+
+      [class$="-root"] .MuiSwitch-track {
+        background-color: ${untypedColor} !important;
+      }
+
+      .MuiSwitch-colorPrimary.Mui-checked {
+        color: ${untypedColor} !important;
       }
 
       [class$="-charTyped"] {
@@ -449,6 +475,11 @@
       [class$="-charActiveBox"] {
         color: ${untypedColor} !important;
         background-color: ${blinkBackground} !important;
+      }
+
+      [class$="-charActiveLine"] {
+        color: ${untypedColor} !important;
+        box-shadow: ${blinkBackground} -2px 0px !important;
       }
 
       [class$="-charUntyped"] {
@@ -469,6 +500,7 @@
 
       [class$="-resetDefaultsButton"] {
         color: ${typedColor} !important;
+        border: 1px solid ${untypedColor} !important;
       }
       `;
 
